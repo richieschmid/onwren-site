@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wren — Read less. Know more.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:        #F1F3F7;
+  --cream-dark:   #E2E6EE;
+  --cream-border: #CDD2DE;
+  --ink:          #141820;
+  --ink-muted:    #505869;
+  --ink-light:    #8A93A6;
+  --navy:         #0D2248;
+  --navy-mid:     #1A3A7A;
+  --navy-light:   #2C56B8;
+  --navy-pale:    #E6EBF7;
+  --white:        #FFFFFF;
+  --green:        #1B5E20;
+  --green-bg:     #E8F5E9;
+  --font-serif:   'Lora', Georgia, serif;
+  --font-sans:    'DM Sans', system-ui, sans-serif;
+  --max:          1080px;
+  --gutter:       24px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── UTILS ───────────────────────────────────── */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.serif { font-family: var(--font-serif); }
+
+/* ── NAV ─────────────────────────────────────── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(241,243,247,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cream-border);
+}
+.nav-inner {
+  max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter);
+  height: 60px; display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo {
+  font-family: var(--font-serif); font-size: 20px; font-weight: 700;
+  color: var(--ink); text-decoration: none; letter-spacing: -0.02em;
+  display: flex; align-items: center; gap: 7px;
+}
+.nav-logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--navy-light); margin-top: 2px; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a {
+  font-size: 14px; font-weight: 500; color: var(--ink-muted);
+  text-decoration: none; transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--navy); }
+.nav-cta {
+  background: var(--navy); color: #fff !important;
+  padding: 8px 18px; border-radius: 8px; font-weight: 600 !important;
+  font-size: 13px !important;
+}
+.nav-cta:hover { background: var(--navy-mid) !important; }
+
+/* ── HERO ─────────────────────────────────────── */
+.hero {
+  padding: 100px var(--gutter) 80px;
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+.hero-eyebrow {
+  font-size: 11px; font-weight: 600; color: var(--navy-light);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 18px;
+  display: flex; align-items: center; gap: 8px;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 24px; height: 1px; background: var(--navy-light);
+}
+.hero-headline {
+  font-family: var(--font-serif); font-size: 52px; font-weight: 700;
+  color: var(--ink); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 22px;
+}
+.hero-headline em { font-style: italic; color: var(--navy-mid); }
+.hero-subhead {
+  font-size: 18px; color: var(--ink-muted); line-height: 1.6;
+  max-width: 440px; margin-bottom: 36px; font-weight: 400;
+}
+.hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--navy); color: #fff; border: none;
+  padding: 14px 28px; border-radius: 10px;
+  font-family: var(--font-sans); font-size: 15px; font-weight: 600;
+  cursor: pointer; text-decoration: none; display: inline-block;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
+.btn-secondary-link {
+  font-size: 14px; font-weight: 500; color: var(--ink-muted);
+  text-decoration: none; display: flex; align-items: center; gap: 5px;
+}
+.btn-secondary-link:hover { color: var(--navy); }
+.hero-social-proof {
+  margin-top: 28px; display: flex; align-items: center; gap: 10px;
+}
+.proof-avatars { display: flex; }
+.proof-avatar {
+  width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--cream);
+  background: var(--navy-pale); display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700; color: var(--navy-mid);
+  margin-left: -8px; font-family: var(--font-sans);
+}
+.proof-avatar:first-child { margin-left: 0; }
+.proof-text { font-size: 13px; color: var(--ink-light); }
+.proof-text strong { color: var(--ink-muted); font-weight: 600; }
+
+/* Hero visual */
+.hero-visual {
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+}
+.phone-frame {
+  width: 260px;
+  background: var(--cream);
+  border-radius: 36px;
+  box-shadow: 0 24px 64px rgba(13,34,72,0.18), 0 4px 16px rgba(13,34,72,0.08), 0 0 0 1px rgba(13,34,72,0.07);
+  overflow: hidden;
+  position: relative; z-index: 2;
+}
+.phone-status {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px 20px 4px; font-size: 11px; font-weight: 600; color: var(--ink);
+}
+.phone-header { padding: 6px 20px 0; }
+.phone-wren {
+  font-family: var(--font-serif); font-size: 11px; font-weight: 600;
+  color: var(--ink-light); letter-spacing: 0.07em;
+  display: flex; align-items: center; gap: 4px; margin-bottom: 3px;
+}
+.phone-wren-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--navy-light); }
+.phone-title {
+  font-family: var(--font-serif); font-size: 22px; font-weight: 700;
+  color: var(--ink); letter-spacing: -0.02em;
+}
+.phone-np-img {
+  margin: 10px 18px 0; border-radius: 12px; overflow: hidden;
+  aspect-ratio: 16/9; background: var(--cream-dark);
+}
+.phone-np-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.45) brightness(0.9); }
+.phone-np-meta { padding: 10px 18px 0; }
+.phone-np-source {
+  font-size: 9px; font-weight: 600; color: var(--navy-light);
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px;
+}
+.phone-np-title {
+  font-family: var(--font-serif); font-size: 13px; font-weight: 600;
+  color: var(--ink); line-height: 1.35;
+}
+.phone-np-progress { padding: 10px 18px 0; }
+.phone-progress-track { height: 2px; background: var(--cream-border); border-radius: 1px; position: relative; }
+.phone-progress-fill { height: 100%; width: 38%; background: var(--navy); border-radius: 1px; }
+.phone-progress-fill::after { content: ''; position: absolute; right: -4px; top: -3px; width: 8px; height: 8px; background: var(--navy); border-radius: 50%; }
+.phone-progress-times { display: flex; justify-content: space-between; margin-top: 5px; font-size: 10px; color: var(--ink-light); }
+.phone-controls { padding: 10px 18px 0; display: flex; align-items: center; justify-content: space-between; }
+.phone-ctrl { width: 18px; height: 18px; color: var(--ink-muted); }
+.phone-play {
+  width: 46px; height: 46px; border-radius: 50%; background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(13,34,72,0.3);
+}
+.phone-play svg { width: 16px; height: 16px; fill: #fff; margin-left: 2px; }
+.phone-speed { display: flex; justify-content: center; gap: 4px; padding: 8px 0 0; }
+.phone-speed-btn {
+  font-size: 10px; font-weight: 500; color: var(--ink-muted);
+  padding: 3px 8px; border-radius: 20px; border: 1px solid var(--cream-border);
+  background: none;
+}
+.phone-speed-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.phone-miniplayer {
+  background: var(--navy); margin: 10px 0 0; padding: 8px 16px;
+  display: flex; align-items: center; gap: 9px;
+}
+.phone-mini-thumb { width: 28px; height: 28px; border-radius: 5px; overflow: hidden; flex-shrink: 0; }
+.phone-mini-thumb img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.3); }
+.phone-mini-info { flex: 1; min-width: 0; }
+.phone-mini-label { font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1px; }
+.phone-mini-title { font-family: var(--font-serif); font-size: 10px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.phone-mini-bar { height: 1px; background: rgba(255,255,255,0.2); margin-top: 4px; }
+.phone-mini-fill { height: 100%; width: 38%; background: rgba(255,255,255,0.5); }
+.phone-tabs {
+  background: var(--cream); border-top: 1px solid var(--cream-border);
+  display: flex; padding: 6px 0 14px;
+}
+.phone-tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.phone-tab svg { width: 16px; height: 16px; stroke: var(--ink-light); fill: none; stroke-width: 1.8; }
+.phone-tab.active svg { stroke: var(--navy); }
+.phone-tab-label { font-size: 9px; color: var(--ink-light); font-weight: 500; }
+.phone-tab.active .phone-tab-label { color: var(--navy); font-weight: 600; }
+
+/* Floating extension badge */
+.ext-badge {
+  position: absolute; right: -20px; top: 60px; z-index: 3;
+  background: var(--white); border-radius: 10px;
+  border: 1px solid var(--cream-border);
+  box-shadow: 0 8px 24px rgba(13,34,72,0.12);
+  padding: 10px 14px; width: 160px;
+}
+.ext-badge-header { display: flex; align-items: center; gap: 6px; margin-bottom: 7px; }
+.ext-badge-icon { width: 22px; height: 22px; border-radius: 5px; background: var(--navy); display: flex; align-items: center; justify-content: center; }
+.ext-badge-icon span { font-family: var(--font-serif); font-weight: 700; color: #F1F3F7; font-size: 13px; }
+.ext-badge-name { font-family: var(--font-serif); font-size: 12px; font-weight: 600; color: var(--ink); }
+.ext-badge-title { font-family: var(--font-serif); font-size: 11px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.ext-badge-url { font-size: 9px; color: var(--ink-light); margin-bottom: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ext-badge-btn { width: 100%; padding: 7px; background: var(--navy); color: #fff; border: none; border-radius: 6px; font-family: var(--font-sans); font-size: 11px; font-weight: 600; cursor: pointer; }
+
+/* ── LOGOS / TRUST BAR ───────────────────────── */
+.trust-bar {
+  border-top: 1px solid var(--cream-border);
+  border-bottom: 1px solid var(--cream-border);
+  padding: 28px var(--gutter);
+  text-align: center;
+}
+.trust-bar-label {
+  font-size: 11px; font-weight: 600; color: var(--ink-light);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px;
+}
+.trust-logos {
+  display: flex; align-items: center; justify-content: center;
+  gap: 40px; flex-wrap: wrap;
+}
+.trust-logo {
+  font-family: var(--font-serif); font-size: 16px; font-weight: 700;
+  color: var(--ink-light); letter-spacing: -0.01em; opacity: 0.55;
+}
+
+/* ── HOW IT WORKS ─────────────────────────────── */
+.section { padding: 96px var(--gutter); }
+.section-inner { max-width: var(--max); margin: 0 auto; }
+.section-eyebrow {
+  font-size: 11px; font-weight: 600; color: var(--navy-light);
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--navy-light); }
+.section-headline {
+  font-family: var(--font-serif); font-size: 38px; font-weight: 700;
+  color: var(--ink); letter-spacing: -0.02em; line-height: 1.15;
+  margin-bottom: 16px; max-width: 560px;
+}
+.section-subhead { font-size: 17px; color: var(--ink-muted); max-width: 520px; margin-bottom: 56px; }
+
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+.step {
+  padding: 36px 32px;
+  background: var(--white);
+  position: relative;
+}
+.step:first-child { border-radius: 14px 0 0 14px; }
+.step:last-child { border-radius: 0 14px 14px 0; }
+.step-number {
+  font-family: var(--font-serif); font-size: 13px; font-weight: 700;
+  color: var(--navy-light); letter-spacing: 0.08em; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.step-number::after { content: ''; flex: 1; height: 1px; background: var(--navy-pale); }
+.step-icon {
+  width: 40px; height: 40px; border-radius: 10px; background: var(--navy-pale);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+}
+.step-icon svg { width: 18px; height: 18px; stroke: var(--navy-mid); fill: none; stroke-width: 1.8; }
+.step-title { font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
+.step-desc { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
+
+/* ── FEATURES ─────────────────────────────────── */
+.features-section { padding: 96px var(--gutter); background: var(--navy); }
+.features-inner { max-width: var(--max); margin: 0 auto; }
+.features-section .section-eyebrow { color: rgba(255,255,255,0.45); }
+.features-section .section-eyebrow::before { background: rgba(255,255,255,0.35); }
+.features-section .section-headline { color: #fff; }
+.features-section .section-subhead { color: rgba(255,255,255,0.55); }
+
+.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
+.feature-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 32px 28px; border-radius: 4px;
+}
+.feature-card:first-child { border-radius: 14px 4px 4px 4px; }
+.feature-card:nth-child(2) { border-radius: 4px 14px 4px 4px; }
+.feature-card:nth-child(3) { border-radius: 4px 4px 4px 14px; }
+.feature-card:last-child { border-radius: 4px 4px 14px 4px; }
+.feature-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
+}
+.feature-icon svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.7); fill: none; stroke-width: 1.8; }
+.feature-title { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.feature-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* ── QUOTE ────────────────────────────────────── */
+.quote-section { padding: 96px var(--gutter); }
+.quote-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.quote-mark { font-family: var(--font-serif); font-size: 72px; color: var(--navy-pale); line-height: 0.5; margin-bottom: 24px; }
+.quote-text {
+  font-family: var(--font-serif); font-size: 26px; font-weight: 500; font-style: italic;
+  color: var(--ink); line-height: 1.5; margin-bottom: 28px;
+}
+.quote-attr { font-size: 13px; color: var(--ink-light); font-weight: 500; letter-spacing: 0.04em; }
+.quote-attr strong { color: var(--ink-muted); }
+
+/* ── PRICING ──────────────────────────────────── */
+.pricing-section { padding: 96px var(--gutter); background: var(--white); }
+.pricing-inner { max-width: var(--max); margin: 0 auto; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
+.pricing-card {
+  background: var(--cream); border-radius: 16px;
+  padding: 32px 28px; border: 1.5px solid transparent;
+  position: relative; overflow: hidden;
+}
+.pricing-card.featured {
+  background: var(--navy); border-color: var(--navy);
+}
+.pricing-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--navy-light); }
+.pricing-badge {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  padding: 3px 10px; border-radius: 20px; letter-spacing: 0.06em;
+  text-transform: uppercase; margin-bottom: 16px;
+}
+.pricing-badge.free-badge { background: var(--green-bg); color: var(--green); }
+.pricing-badge.pro-badge { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
+.pricing-badge.bundle-badge { background: var(--navy-pale); color: var(--navy-mid); }
+.pricing-name { font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
+.pricing-card.featured .pricing-name { color: #fff; }
+.pricing-desc { font-size: 13px; color: var(--ink-muted); margin-bottom: 24px; line-height: 1.5; }
+.pricing-card.featured .pricing-desc { color: rgba(255,255,255,0.55); }
+.pricing-price { margin-bottom: 24px; }
+.pricing-amount { font-family: var(--font-serif); font-size: 40px; font-weight: 700; color: var(--ink); letter-spacing: -0.03em; line-height: 1; }
+.pricing-card.featured .pricing-amount { color: #fff; }
+.pricing-amount sup { font-size: 20px; vertical-align: super; letter-spacing: 0; }
+.pricing-period { font-size: 13px; color: var(--ink-light); margin-top: 4px; }
+.pricing-card.featured .pricing-period { color: rgba(255,255,255,0.45); }
+.pricing-features { list-style: none; margin-bottom: 28px; }
+.pricing-features li {
+  font-size: 14px; color: var(--ink-muted); padding: 7px 0;
+  border-bottom: 1px solid var(--cream-border);
+  display: flex; align-items: center; gap: 9px;
+}
+.pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.65); border-bottom-color: rgba(255,255,255,0.08); }
+.pricing-features li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--navy-light); flex-shrink: 0; }
+.pricing-card.featured .pricing-features li::before { background: rgba(255,255,255,0.4); }
+.pricing-cta {
+  display: block; width: 100%; padding: 13px;
+  border-radius: 10px; font-family: var(--font-sans);
+  font-size: 14px; font-weight: 600; text-align: center;
+  text-decoration: none; cursor: pointer; border: none;
+  transition: opacity 0.15s;
+}
+.pricing-cta:hover { opacity: 0.88; }
+.pricing-cta.cta-outline { background: none; border: 1.5px solid var(--cream-border); color: var(--ink-muted); }
+.pricing-cta.cta-navy { background: var(--navy); color: #fff; }
+.pricing-cta.cta-white { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
+
+/* Bundle picker */
+.bundle-row { display: flex; gap: 8px; margin-bottom: 24px; }
+.bundle-opt {
+  flex: 1; background: var(--white); border-radius: 10px;
+  border: 1.5px solid var(--cream-border); padding: 10px 6px;
+  text-align: center; cursor: pointer;
+}
+.bundle-opt:hover { border-color: var(--navy-pale2, #C4D2EE); }
+.bundle-qty { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--ink); }
+.bundle-unit { font-size: 9px; color: var(--ink-light); text-transform: uppercase; letter-spacing: 0.05em; }
+.bundle-price { font-size: 13px; font-weight: 600; color: var(--navy-mid); margin-top: 4px; }
+
+/* ── FOOTER ───────────────────────────────────── */
+footer {
+  background: var(--navy);
+  padding: 56px var(--gutter) 40px;
+}
+.footer-inner { max-width: var(--max); margin: 0 auto; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; flex-wrap: wrap; gap: 32px; }
+.footer-brand {}
+.footer-logo { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
+.footer-logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--navy-light); }
+.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.4); font-style: italic; font-family: var(--font-serif); }
+.footer-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; padding-top: 6px; }
+.footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.15s; }
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
+
+/* ── RESPONSIVE ───────────────────────────────── */
+@media (max-width: 840px) {
+  .hero { grid-template-columns: 1fr; padding: 60px var(--gutter) 48px; gap: 48px; }
+  .hero-headline { font-size: 38px; }
+  .hero-visual { display: none; }
+  .steps-grid { grid-template-columns: 1fr; gap: 2px; }
+  .step:first-child { border-radius: 14px 14px 0 0; }
+  .step:last-child { border-radius: 0 0 14px 14px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .section-headline { font-size: 28px; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <span style="font-family:'Lora',serif;font-weight:700;">W</span>
+      <span class="nav-logo-dot"></span>
+      Wren
+    </a>
+    <div class="nav-links">
+<a href="https://app.onwren.com" class="nav-cta">Start Listening Free</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section style="background: var(--cream);">
+  <div class="hero">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">Introducing Wren</div>
+      <h1 class="hero-headline serif">Listen to everything<br><em>you've been meaning to read.</em></h1>
+      <p class="hero-subhead">Wren turns articles, research papers, and long reads into audio summaries — so your commute, gym session, or morning walk becomes time well spent.</p>
+      <div class="hero-ctas">
+        <a href="https://app.onwren.com" class="btn-primary">Start Listening Free</a>
+        <span style="font-size:14px;font-weight:500;color:var(--ink-light);display:flex;align-items:center;gap:8px;">
+          Chrome extension
+          <span style="font-size:10px;font-weight:700;color:var(--ink-light);background:var(--cream-dark);padding:2px 9px;border-radius:20px;letter-spacing:0.07em;text-transform:uppercase;">Coming Soon</span>
+        </span>
+      </div>
+      <div class="hero-social-proof">
+        <div class="proof-avatars">
+          <div class="proof-avatar">DR</div>
+          <div class="proof-avatar">MK</div>
+          <div class="proof-avatar">JL</div>
+          <div class="proof-avatar">+</div>
+        </div>
+        <p class="proof-text"><strong>Used by physicians, researchers,</strong> and curious readers</p>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <!-- Phone mockup -->
+      <div class="phone-frame">
+        <div class="phone-status">
+          <span>9:41</span>
+          <div style="display:flex;gap:4px;align-items:center;">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M20 11h3v2h-3z"/></svg>
+          </div>
+        </div>
+        <div class="phone-header">
+          <div class="phone-wren"><span class="phone-wren-dot"></span>Wren</div>
+          <div class="phone-title">Now Playing</div>
+        </div>
+        <div class="phone-np-img">
+          <img src="https://picsum.photos/seed/wren1/520/293" alt="">
+        </div>
+        <div class="phone-np-meta">
+          <div class="phone-np-source">The Verge</div>
+          <div class="phone-np-title">Apple Intelligence is finally good — here's what actually changed</div>
+        </div>
+        <div class="phone-np-progress">
+          <div class="phone-progress-track"><div class="phone-progress-fill"></div></div>
+          <div class="phone-progress-times"><span>2:14</span><span>5:30</span></div>
+        </div>
+        <div class="phone-controls">
+          <svg class="phone-ctrl" viewBox="0 0 24 24"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+          <svg class="phone-ctrl" viewBox="0 0 24 24" style="width:22px;height:22px;"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>
+          <div class="phone-play"><svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          <svg class="phone-ctrl" viewBox="0 0 24 24" style="width:22px;height:22px;"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-.49-4.5"/></svg>
+          <svg class="phone-ctrl" viewBox="0 0 24 24"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></svg>
+        </div>
+        <div class="phone-speed">
+          <button class="phone-speed-btn">0.75×</button>
+          <button class="phone-speed-btn active">1×</button>
+          <button class="phone-speed-btn">1.25×</button>
+          <button class="phone-speed-btn">1.5×</button>
+        </div>
+        <div class="phone-miniplayer">
+          <div class="phone-mini-thumb"><img src="https://picsum.photos/seed/wren1/56/56" alt=""></div>
+          <div class="phone-mini-info">
+            <div class="phone-mini-label">Now Playing</div>
+            <div class="phone-mini-title">Apple Intelligence is finally good…</div>
+            <div class="phone-mini-bar"><div class="phone-mini-fill"></div></div>
+          </div>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="#fff"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </div>
+        <div class="phone-tabs">
+          <div class="phone-tab active">
+            <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><circle cx="3" cy="6" r="1" fill="var(--navy)" stroke="none"/><circle cx="3" cy="12" r="1" fill="var(--navy)" stroke="none"/><circle cx="3" cy="18" r="1" fill="var(--navy)" stroke="none"/></svg>
+            <span class="phone-tab-label">Queue</span>
+          </div>
+          <div class="phone-tab">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-1a6 6 0 0 1 12 0v1"/></svg>
+            <span class="phone-tab-label">Settings</span>
+          </div>
+        </div>
+      </div>
+      <!-- Floating extension popup -->
+      <div class="ext-badge">
+        <div class="ext-badge-header">
+          <div class="ext-badge-icon"><span>W</span></div>
+          <div class="ext-badge-name">Wren</div>
+        </div>
+        <div class="ext-badge-title">Add to Queue</div>
+        <div class="ext-badge-url">theverge.com/2026/apple-intel…</div>
+        <button class="ext-badge-btn">Add to Wren</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <p class="trust-bar-label">Read by people who read a lot</p>
+  <div class="trust-logos">
+    <span class="trust-logo">The Verge</span>
+    <span class="trust-logo">NEJM</span>
+    <span class="trust-logo">ESPN</span>
+    <span class="trust-logo">Wired</span>
+    <span class="trust-logo">Nature</span>
+    <span class="trust-logo">The Atlantic</span>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how-it-works">
+  <div class="section-inner">
+    <div class="section-eyebrow">How it works</div>
+    <h2 class="section-headline serif">Three steps. Zero reading required.</h2>
+    <p class="section-subhead">Save anything from the web, get a clear spoken summary, listen whenever suits you.</p>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-number">01</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+        <h3 class="step-title serif">Save the article</h3>
+        <p class="step-desc">Click the Wren extension on any article, blog post, or research paper. Or paste a URL directly into the app. Wren captures the full text instantly.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">02</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <h3 class="step-title serif">Wren summarizes it</h3>
+        <p class="step-desc">Our AI reads the article and generates a clear, spoken summary — a few minutes for standard articles, up to 20 minutes for long-form research. No fluff, no filler.</p>
+      </div>
+      <div class="step">
+        <div class="step-number">03</div>
+        <div class="step-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
+        </div>
+        <h3 class="step-title serif">Listen anywhere</h3>
+        <p class="step-desc">Open Wren on your phone and your queue is ready. Listen on your commute, at the gym, while cooking — whenever reading isn't an option.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="features-inner">
+    <div class="section-eyebrow">Features</div>
+    <h2 class="section-headline serif" style="color:#fff;">Everything you need.<br>Nothing you don't.</h2>
+    <p class="section-subhead">Built for people who take their reading seriously.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <h3 class="feature-title serif">Chrome extension</h3>
+        <p class="feature-desc">Save any article you're reading with one click. Works on news sites, blogs, journals, and most paywalled content you're already subscribed to.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+        <h3 class="feature-title serif">Mobile-first app</h3>
+        <p class="feature-desc">Add Wren to your home screen for a native app feel. Queue syncs across all your devices — save on desktop, listen on your phone.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <h3 class="feature-title serif">PDF support</h3>
+        <p class="feature-desc">Upload PDFs directly — research papers, reports, whitepapers. Wren extracts the text and generates a summary just like any other article.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></div>
+        <h3 class="feature-title serif">Pro long-form</h3>
+        <p class="feature-desc">Pro subscribers unlock summaries up to 20 minutes long — ideal for academic journals, clinical studies, and long-form essays that deserve proper treatment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+  <div class="quote-inner">
+    <div class="quote-mark serif">"</div>
+    <p class="quote-text serif">I have a stack of journal articles I've been meaning to read for months. Wren got me through six of them on my drive home last week.</p>
+    <p class="quote-attr"><strong>Beta user</strong> · Oral Surgeon</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="pricing">
+  <div class="pricing-inner">
+    <div class="section-eyebrow">Pricing</div>
+    <h2 class="section-headline serif">Simple, honest pricing.</h2>
+    <p class="section-subhead">Start free. Pay only when you need more.</p>
+    <div class="pricing-grid">
+
+      <!-- Free -->
+      <div class="pricing-card">
+        <span class="pricing-badge free-badge">Free</span>
+        <div class="pricing-name serif">Free</div>
+        <p class="pricing-desc">Everything you need to get started. No credit card required.</p>
+        <div class="pricing-price">
+          <div class="pricing-amount serif">$0</div>
+          <div class="pricing-period">per month, always</div>
+        </div>
+        <ul class="pricing-features">
+          <li>10 standard articles per month</li>
+          <li>Chrome extension</li>
+          <li>Mobile app access</li>
+          <li>Adjustable playback speed</li>
+        </ul>
+        <a href="https://app.onwren.com" class="pricing-cta cta-outline">Get started free</a>
+      </div>
+
+      <!-- Bundles -->
+      <div class="pricing-card">
+        <span class="pricing-badge bundle-badge">Pay as you go</span>
+        <div class="pricing-name serif">Top Up</div>
+        <p class="pricing-desc">Need more standard articles this month? Buy a bundle — no subscription required.</p>
+        <div class="pricing-price" style="margin-bottom:16px;">
+          <div class="pricing-amount serif" style="font-size:28px;">From <sup style="font-size:14px;">$</sup>2.99</div>
+          <div class="pricing-period">per bundle, one-time</div>
+        </div>
+        <div class="bundle-row">
+          <div class="bundle-opt">
+            <div class="bundle-qty serif">10</div>
+            <div class="bundle-unit">articles</div>
+            <div class="bundle-price">$2.99</div>
+          </div>
+          <div class="bundle-opt">
+            <div class="bundle-qty serif">50</div>
+            <div class="bundle-unit">articles</div>
+            <div class="bundle-price">$11.99</div>
+          </div>
+          <div class="bundle-opt">
+            <div class="bundle-qty serif">150</div>
+            <div class="bundle-unit">articles</div>
+            <div class="bundle-price">$24.99</div>
+          </div>
+        </div>
+        <a href="https://app.onwren.com" class="pricing-cta cta-outline">Buy a bundle</a>
+      </div>
+
+      <!-- Pro -->
+      <div class="pricing-card featured">
+        <span class="pricing-badge pro-badge">Pro</span>
+        <div class="pricing-name serif" style="color:#fff;">Unlimited</div>
+        <p class="pricing-desc">For professionals who need to stay current on research and long-form content.</p>
+        <div class="pricing-price">
+          <div class="pricing-amount serif" style="color:#fff;"><sup>$</sup>19.99</div>
+          <div class="pricing-period">per month</div>
+        </div>
+        <ul class="pricing-features">
+          <li>Unlimited standard articles</li>
+          <li>Long-form summaries up to 20 min</li>
+          <li>Journal &amp; research paper support</li>
+          <li>PDF uploads</li>
+          <li>Priority processing</li>
+        </ul>
+        <a href="https://app.onwren.com" class="pricing-cta cta-white">Upgrade to Pro</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <span style="font-family:'Lora',serif;font-weight:700;">W</span>
+          <span class="footer-logo-dot"></span>
+          Wren
+        </div>
+        <div class="footer-tagline">Your reading list, in your ears.</div>
+      </div>
+      <div class="footer-links">
+        <a href="https://app.onwren.com">Open App</a>
+        <span style="font-size:13px;color:rgba(255,255,255,0.3);">Extension — Coming Soon</span>
+        <a href="#">Privacy Policy</a>
+        <a href="/cdn-cgi/l/email-protection#771f121b1b18371819000512195914181a">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 Wren. All rights reserved.</p>
+      <p class="footer-copy">Made for people with too much to read.</p>
+    </di
