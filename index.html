@@ -29,7 +29,8 @@
   --gutter:       24px;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { overflow-x: hidden; }
 
 body {
   background: var(--cream);
@@ -408,8 +409,25 @@ footer {
 /* ── RESPONSIVE ───────────────────────────────── */
 @media (max-width: 840px) {
   .hero { grid-template-columns: 1fr; padding: 60px var(--gutter) 48px; gap: 48px; }
-  .hero-headline { font-size: 38px; }
-  .hero-visual { display: flex; justify-content: center; margin-top: 40px; padding: 0 32px; }
+  /* Mobile hero — phone only, no browser mockup */
+  .browser-mockup { display: none; }
+  .bm-divider { display: none; }
+  div[style*="padding-bottom:52px"],
+  div[style*="padding-bottom: 52px"] {
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+  }
+  .phone-frame {
+    position: static !important;
+    width: 240px !important;
+    margin: 0 auto;
+    border-radius: 36px;
+  }
+
+  .hero-headline { font-size: 28px; }
+  .hero { padding: 48px var(--gutter) 56px; }
+
   .ext-badge { right: -10px; }
   .steps-grid { grid-template-columns: 1fr; gap: 2px; }
   .step:first-child { border-radius: 14px 14px 0 0; }
@@ -777,7 +795,7 @@ footer {
         <a href="https://app.onwren.com" target="_blank" rel="noopener noreferrer">Open App</a>
         <a href="https://chromewebstore.google.com/detail/wren/hhgeojcfjcckmmkfhngdlcalbgjljgam?authuser=0&hl=en" target="_blank" rel="noopener noreferrer">Chrome Extension</a>
         <a href="https://app.onwren.com/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="mailto:hello@onwren.com">Contact</a>
+        <a href="/cdn-cgi/l/email-protection#6008050c0c0f200f0e1712050e4e030f0d">Contact</a>
       </div>
     </div>
     <div class="footer-bottom">
