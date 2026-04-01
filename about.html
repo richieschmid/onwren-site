@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wren | More listening. Less screen time.</title>
+<title>Wren | Richard Schmid</title>
+<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --cream:        #F1F3F7;
   --cream-dark:   #E2E6EE;
@@ -21,34 +21,22 @@
   --navy-light:   #2C56B8;
   --navy-pale:    #E6EBF7;
   --white:        #FFFFFF;
-  --green:        #1B5E20;
-  --green-bg:     #E8F5E9;
-  --font-serif:   'Lora', Georgia, serif;
-  --font-sans:    'DM Sans', system-ui, sans-serif;
+  --font-serif:   "Lora", Georgia, serif;
+  --font-sans:    "DM Sans", system-ui, sans-serif;
   --max:          1080px;
   --gutter:       24px;
 }
-
 html { scroll-behavior: smooth; }
-
 body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: var(--font-sans);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
+  background: var(--cream); color: var(--ink);
+  font-family: var(--font-sans); font-size: 16px;
+  line-height: 1.6; -webkit-font-smoothing: antialiased;
 }
 
-/* ── UTILS ───────────────────────────────────── */
-.container { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
-.serif { font-family: var(--font-serif); }
-
-/* ── NAV ─────────────────────────────────────── */
+/* NAV */
 nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(241,243,247,0.92);
-  backdrop-filter: blur(12px);
+  background: rgba(241,243,247,0.92); backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--cream-border);
 }
 .nav-inner {
@@ -62,365 +50,52 @@ nav {
 }
 .nav-logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--navy-light); margin-top: 2px; }
 .nav-links { display: flex; align-items: center; gap: 28px; }
-.nav-links a {
-  font-size: 14px; font-weight: 500; color: var(--ink-muted);
-  text-decoration: none; transition: color 0.15s;
-}
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--ink-muted); text-decoration: none; transition: color 0.15s; }
 .nav-links a:hover { color: var(--navy); }
-.nav-cta {
-  background: var(--navy); color: #fff !important;
-  padding: 8px 18px; border-radius: 8px; font-weight: 600 !important;
-  font-size: 13px !important;
-}
-.nav-cta:hover { background: var(--navy-mid) !important; }
+.nav-cta { background: var(--navy); color: #fff !important; padding: 8px 18px; border-radius: 8px; font-weight: 600 !important; font-size: 13px !important; }
 
-/* ── HERO ─────────────────────────────────────── */
-.hero {
-  padding: 100px var(--gutter) 80px;
-  max-width: var(--max); margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 60px; align-items: center;
-}
-.hero-eyebrow {
+/* EYEBROW */
+.eyebrow {
   font-size: 11px; font-weight: 600; color: var(--navy-light);
-  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 18px;
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 14px;
   display: flex; align-items: center; gap: 8px;
 }
-.hero-eyebrow::before {
-  content: ''; display: block; width: 24px; height: 1px; background: var(--navy-light);
+.eyebrow::before { content: ""; display: block; width: 24px; height: 1px; background: var(--navy-light); }
+
+/* INTRO */
+.intro {
+  max-width: var(--max); margin: 0 auto;
+  padding: 88px var(--gutter) 96px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center;
 }
-.hero-headline {
-  font-family: var(--font-serif); font-size: 52px; font-weight: 700;
+.intro-headline {
+  font-family: var(--font-serif); font-size: 46px; font-weight: 700;
   color: var(--ink); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 22px;
 }
-.hero-headline em { font-style: italic; color: var(--navy-mid); }
-.hero-subhead {
-  font-size: 18px; color: var(--ink-muted); line-height: 1.6;
-  max-width: 440px; margin-bottom: 36px; font-weight: 400;
+.intro-headline em { font-style: italic; color: var(--navy-mid); }
+.intro-body { font-size: 17px; color: var(--ink-muted); line-height: 1.7; margin-bottom: 20px; }
+.intro-stats {
+  display: flex; gap: 28px;
+  border-top: 1px solid var(--cream-border); padding-top: 20px; margin-bottom: 24px;
 }
-.hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-.btn-primary {
-  background: var(--navy); color: #fff; border: none;
-  padding: 14px 28px; border-radius: 10px;
-  font-family: var(--font-sans); font-size: 15px; font-weight: 600;
-  cursor: pointer; text-decoration: none; display: inline-block;
-  transition: background 0.15s, transform 0.1s;
+.intro-stat-item { display: flex; flex-direction: column; gap: 2px; }
+.stat-val { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: var(--navy); letter-spacing: -0.02em; line-height: 1; }
+.stat-lbl { font-size: 11px; color: var(--ink-light); line-height: 1.3; }
+.intro-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 14px; font-weight: 600; color: var(--navy);
+  text-decoration: none; border-bottom: 1.5px solid var(--navy-pale);
+  padding-bottom: 2px; transition: border-color 0.15s;
 }
-.btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
-.btn-secondary-link {
-  font-size: 14px; font-weight: 500; color: var(--ink-muted);
-  text-decoration: none; display: flex; align-items: center; gap: 5px;
-}
-.btn-secondary-link:hover { color: var(--navy); }
-.hero-social-proof {
-  margin-top: 28px; display: flex; align-items: center; gap: 10px;
-}
-.proof-avatars { display: flex; }
-.proof-avatar {
-  width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--cream);
-  background: var(--navy-pale); display: flex; align-items: center; justify-content: center;
-  font-size: 10px; font-weight: 700; color: var(--navy-mid);
-  margin-left: -8px; font-family: var(--font-sans);
-}
-.proof-avatar:first-child { margin-left: 0; }
-.proof-text { font-size: 13px; color: var(--ink-light); }
-.proof-text strong { color: var(--ink-muted); font-weight: 600; }
+.intro-link:hover { border-color: var(--navy); }
 
-/* Hero visual */
-.hero-visual {
-  display: flex; justify-content: center; align-items: center;
-  position: relative;
+/* BROWSER MOCKUP */
+.browser-mockup {
+  background: white; border-radius: 12px;
+  box-shadow: 0 24px 64px rgba(13,34,72,0.16), 0 4px 16px rgba(13,34,72,0.08);
+  overflow: hidden; border: 1px solid var(--cream-border);
 }
-.phone-frame {
-  width: 260px;
-  background: var(--cream);
-  border-radius: 36px;
-  box-shadow: 0 24px 64px rgba(13,34,72,0.18), 0 4px 16px rgba(13,34,72,0.08), 0 0 0 1px rgba(13,34,72,0.07);
-  overflow: hidden;
-  position: relative; z-index: 2;
-}
-.phone-status {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 12px 20px 4px; font-size: 11px; font-weight: 600; color: var(--ink);
-}
-.phone-header { padding: 6px 20px 0; }
-.phone-wren {
-  font-family: var(--font-serif); font-size: 11px; font-weight: 600;
-  color: var(--ink-light); letter-spacing: 0.07em;
-  display: flex; align-items: center; gap: 4px; margin-bottom: 3px;
-}
-.phone-wren-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--navy-light); }
-.phone-title {
-  font-family: var(--font-serif); font-size: 22px; font-weight: 700;
-  color: var(--ink); letter-spacing: -0.02em;
-}
-.phone-np-img {
-  margin: 10px 18px 0; border-radius: 12px; overflow: hidden;
-  aspect-ratio: 16/9; background: var(--cream-dark);
-}
-.phone-np-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.45) brightness(0.9); }
-.phone-np-meta { padding: 10px 18px 0; }
-.phone-np-source {
-  font-size: 9px; font-weight: 600; color: var(--navy-light);
-  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px;
-}
-.phone-np-title {
-  font-family: var(--font-serif); font-size: 13px; font-weight: 600;
-  color: var(--ink); line-height: 1.35;
-}
-.phone-np-progress { padding: 10px 18px 0; }
-.phone-progress-track { height: 2px; background: var(--cream-border); border-radius: 1px; position: relative; }
-.phone-progress-fill { position: relative; height: 100%; width: 38%; background: var(--navy); border-radius: 1px; }
-.phone-progress-times { display: flex; justify-content: space-between; margin-top: 5px; font-size: 10px; color: var(--ink-light); }
-.phone-controls { padding: 10px 18px 14px; display: flex; align-items: center; justify-content: space-between; }
-.phone-controls .phone-ctrl {
-  padding: 0; border: none; background: none; margin: 0; color: var(--ink-muted);
-  display: inline-flex; align-items: center; justify-content: center;
-  appearance: none; -webkit-appearance: none; font: inherit; line-height: 0; cursor: default;
-}
-.phone-play {
-  width: 34px; height: 34px; border-radius: 50%; background: var(--navy);
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 4px 14px rgba(13,34,72,0.3);
-}
-.phone-play svg { width: 13px; height: 13px; fill: #fff; margin-left: 2px; }
-.phone-speed { display: flex; justify-content: center; gap: 4px; padding: 8px 0 0; }
-.phone-speed-btn {
-  font-size: 10px; font-weight: 500; color: var(--ink-muted);
-  padding: 3px 8px; border-radius: 20px; border: 1px solid var(--cream-border);
-  background: none;
-}
-.phone-speed-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
-.phone-miniplayer {
-  background: var(--navy); margin: 10px 0 0; padding: 8px 16px;
-  display: flex; align-items: center; gap: 9px;
-}
-.phone-mini-thumb { width: 28px; height: 28px; border-radius: 5px; overflow: hidden; flex-shrink: 0; }
-.phone-mini-thumb img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.3); }
-.phone-mini-info { flex: 1; min-width: 0; }
-.phone-mini-label { font-size: 8px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1px; }
-.phone-mini-title { font-family: var(--font-serif); font-size: 10px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.phone-mini-bar { height: 1px; background: rgba(255,255,255,0.2); margin-top: 4px; }
-.phone-mini-fill { height: 100%; width: 38%; background: rgba(255,255,255,0.5); }
-.phone-tabs {
-  background: var(--cream); border-top: 1px solid var(--cream-border);
-  display: flex; padding: 6px 0 14px;
-}
-.phone-tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
-.phone-tab svg { width: 16px; height: 16px; stroke: var(--ink-light); fill: none; stroke-width: 1.8; }
-.phone-tab.active svg { stroke: var(--navy); }
-.phone-tab-label { font-size: 9px; color: var(--ink-light); font-weight: 500; }
-.phone-tab.active .phone-tab-label { color: var(--navy); font-weight: 600; }
-
-/* Floating extension badge */
-.ext-badge {
-  position: absolute; right: -20px; top: 60px; z-index: 3;
-  background: var(--white); border-radius: 10px;
-  border: 1px solid var(--cream-border);
-  box-shadow: 0 8px 24px rgba(13,34,72,0.12);
-  padding: 10px 14px; width: 160px;
-}
-.ext-badge-header { display: flex; align-items: center; gap: 6px; margin-bottom: 7px; }
-.ext-badge-icon { width: 22px; height: 22px; border-radius: 5px; background: var(--navy); display: flex; align-items: center; justify-content: center; }
-.ext-badge-icon span { font-family: var(--font-serif); font-weight: 700; color: #F1F3F7; font-size: 13px; }
-.ext-badge-name { font-family: var(--font-serif); font-size: 12px; font-weight: 600; color: var(--ink); }
-.ext-badge-title { font-family: var(--font-serif); font-size: 11px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-.ext-badge-url { font-size: 9px; color: var(--ink-light); margin-bottom: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ext-badge-btn { width: 100%; padding: 7px; background: var(--navy); color: #fff; border: none; border-radius: 6px; font-family: var(--font-sans); font-size: 11px; font-weight: 600; cursor: pointer; }
-
-/* ── LOGOS / TRUST BAR ───────────────────────── */
-.trust-bar {
-  border-top: 1px solid var(--cream-border);
-  border-bottom: 1px solid var(--cream-border);
-  padding: 28px var(--gutter);
-  text-align: center;
-}
-.trust-bar-label {
-  font-size: 11px; font-weight: 600; color: var(--ink-light);
-  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px;
-}
-.trust-logos {
-  display: flex; align-items: center; justify-content: center;
-  gap: 40px; flex-wrap: wrap;
-}
-.trust-logo {
-  font-family: var(--font-serif); font-size: 16px; font-weight: 700;
-  color: var(--ink-light); letter-spacing: -0.01em; opacity: 0.55;
-}
-
-/* ── HOW IT WORKS ─────────────────────────────── */
-.section { padding: 96px var(--gutter); }
-.section-inner { max-width: var(--max); margin: 0 auto; }
-.section-eyebrow {
-  font-size: 11px; font-weight: 600; color: var(--navy-light);
-  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 12px;
-  display: flex; align-items: center; gap: 8px;
-}
-.section-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--navy-light); }
-.section-headline {
-  font-family: var(--font-serif); font-size: 38px; font-weight: 700;
-  color: var(--ink); letter-spacing: -0.02em; line-height: 1.15;
-  margin-bottom: 16px; max-width: 560px;
-}
-.section-subhead { font-size: 17px; color: var(--ink-muted); max-width: 520px; margin-bottom: 56px; }
-
-.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
-.step {
-  padding: 36px 32px;
-  background: var(--white);
-  position: relative;
-}
-.step:first-child { border-radius: 14px 0 0 14px; }
-.step:last-child { border-radius: 0 14px 14px 0; }
-.step-number {
-  font-family: var(--font-serif); font-size: 13px; font-weight: 700;
-  color: var(--navy-light); letter-spacing: 0.08em; margin-bottom: 16px;
-  display: flex; align-items: center; gap: 8px;
-}
-.step-number::after { content: ''; flex: 1; height: 1px; background: var(--navy-pale); }
-.step-icon {
-  width: 40px; height: 40px; border-radius: 10px; background: var(--navy-pale);
-  display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
-}
-.step-icon svg { width: 18px; height: 18px; stroke: var(--navy-mid); fill: none; stroke-width: 1.8; }
-.step-title { font-family: var(--font-serif); font-size: 20px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
-.step-desc { font-size: 14px; color: var(--ink-muted); line-height: 1.6; }
-
-/* ── FEATURES ─────────────────────────────────── */
-.features-section { padding: 96px var(--gutter); background: var(--navy); }
-.features-inner { max-width: var(--max); margin: 0 auto; }
-.features-section .section-eyebrow { color: rgba(255,255,255,0.45); }
-.features-section .section-eyebrow::before { background: rgba(255,255,255,0.35); }
-.features-section .section-headline { color: #fff; }
-.features-section .section-subhead { color: rgba(255,255,255,0.55); }
-
-.features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; }
-.feature-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
-  padding: 32px 28px; border-radius: 4px;
-}
-.feature-card:first-child { border-radius: 14px 4px 4px 4px; }
-.feature-card:nth-child(2) { border-radius: 4px 14px 4px 4px; }
-.feature-card:nth-child(3) { border-radius: 4px 4px 4px 14px; }
-.feature-card:last-child { border-radius: 4px 4px 14px 4px; }
-.feature-icon {
-  width: 36px; height: 36px; border-radius: 8px;
-  background: rgba(255,255,255,0.08);
-  display: flex; align-items: center; justify-content: center; margin-bottom: 14px;
-}
-.feature-icon svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.7); fill: none; stroke-width: 1.8; }
-.feature-title { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.feature-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.6; }
-
-/* ── QUOTE ────────────────────────────────────── */
-.quote-section { padding: 96px var(--gutter); }
-.quote-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-.quote-mark { font-family: var(--font-serif); font-size: 72px; color: var(--navy-pale); line-height: 0.5; margin-bottom: 24px; }
-.quote-text {
-  font-family: var(--font-serif); font-size: 26px; font-weight: 500; font-style: italic;
-  color: var(--ink); line-height: 1.5; margin-bottom: 28px;
-}
-.quote-attr { font-size: 13px; color: var(--ink-light); font-weight: 500; letter-spacing: 0.04em; }
-.quote-attr strong { color: var(--ink-muted); }
-
-/* ── PRICING ──────────────────────────────────── */
-.pricing-section { padding: 96px var(--gutter); background: var(--white); }
-.pricing-inner { max-width: var(--max); margin: 0 auto; }
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px; }
-.pricing-card {
-  background: var(--cream); border-radius: 16px;
-  padding: 32px 28px; border: 1.5px solid transparent;
-  position: relative; overflow: hidden;
-}
-.pricing-card.featured {
-  background: var(--navy); border-color: var(--navy);
-}
-.pricing-card.featured::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--navy-light); }
-.pricing-badge {
-  display: inline-block; font-size: 10px; font-weight: 700;
-  padding: 3px 10px; border-radius: 20px; letter-spacing: 0.06em;
-  text-transform: uppercase; margin-bottom: 16px;
-}
-.pricing-badge.free-badge { background: var(--green-bg); color: var(--green); }
-.pricing-badge.pro-badge { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
-.pricing-badge.bundle-badge { background: var(--navy-pale); color: var(--navy-mid); }
-.pricing-name { font-family: var(--font-serif); font-size: 24px; font-weight: 700; color: var(--ink); margin-bottom: 6px; }
-.pricing-card.featured .pricing-name { color: #fff; }
-.pricing-desc { font-size: 13px; color: var(--ink-muted); margin-bottom: 24px; line-height: 1.5; }
-.pricing-card.featured .pricing-desc { color: rgba(255,255,255,0.55); }
-.pricing-price { margin-bottom: 24px; }
-.pricing-amount { font-family: var(--font-serif); font-size: 40px; font-weight: 700; color: var(--ink); letter-spacing: -0.03em; line-height: 1; }
-.pricing-card.featured .pricing-amount { color: #fff; }
-.pricing-amount sup { font-size: 20px; vertical-align: super; letter-spacing: 0; }
-.pricing-period { font-size: 13px; color: var(--ink-light); margin-top: 4px; }
-.pricing-card.featured .pricing-period { color: rgba(255,255,255,0.45); }
-.pricing-features { list-style: none; margin-bottom: 28px; }
-.pricing-features li {
-  font-size: 14px; color: var(--ink-muted); padding: 7px 0;
-  border-bottom: 1px solid var(--cream-border);
-  display: flex; align-items: center; gap: 9px;
-}
-.pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.65); border-bottom-color: rgba(255,255,255,0.08); }
-.pricing-features li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--navy-light); flex-shrink: 0; }
-.pricing-card.featured .pricing-features li::before { background: rgba(255,255,255,0.4); }
-.pricing-cta {
-  display: block; width: 100%; padding: 13px;
-  border-radius: 10px; font-family: var(--font-sans);
-  font-size: 14px; font-weight: 600; text-align: center;
-  text-decoration: none; cursor: pointer; border: none;
-  transition: opacity 0.15s;
-}
-.pricing-cta:hover { opacity: 0.88; }
-.pricing-cta.cta-outline { background: none; border: 1.5px solid var(--cream-border); color: var(--ink-muted); }
-.pricing-cta.cta-navy { background: var(--navy); color: #fff; }
-.pricing-cta.cta-white { background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.2); }
-
-/* Bundle picker */
-.bundle-row { display: flex; gap: 8px; margin-bottom: 24px; }
-.bundle-opt {
-  flex: 1; background: var(--white); border-radius: 10px;
-  border: 1.5px solid var(--cream-border); padding: 10px 6px;
-  text-align: center; cursor: pointer;
-}
-.bundle-opt:hover { border-color: var(--navy-pale2, #C4D2EE); }
-.bundle-qty { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--ink); }
-.bundle-unit { font-size: 9px; color: var(--ink-light); text-transform: uppercase; letter-spacing: 0.05em; }
-.bundle-price { font-size: 13px; font-weight: 600; color: var(--navy-mid); margin-top: 4px; }
-
-/* ── FOOTER ───────────────────────────────────── */
-footer {
-  background: var(--navy);
-  padding: 56px var(--gutter) 40px;
-}
-.footer-inner { max-width: var(--max); margin: 0 auto; }
-.footer-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 40px; flex-wrap: wrap; gap: 32px; }
-.footer-brand {}
-.footer-logo { font-family: var(--font-serif); font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 8px; display: flex; align-items: center; gap: 7px; }
-.footer-logo-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--navy-light); }
-.footer-tagline { font-size: 13px; color: rgba(255,255,255,0.4); font-style: italic; font-family: var(--font-serif); }
-.footer-links { display: flex; gap: 28px; flex-wrap: wrap; align-items: center; padding-top: 6px; }
-.footer-links a { font-size: 13px; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.15s; }
-.footer-links a:hover { color: rgba(255,255,255,0.8); }
-.footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
-.footer-copy { font-size: 12px; color: rgba(255,255,255,0.3); }
-
-/* ── RESPONSIVE ───────────────────────────────── */
-@media (max-width: 840px) {
-  .hero { grid-template-columns: 1fr; padding: 60px var(--gutter) 48px; gap: 48px; }
-  .hero-headline { font-size: 38px; }
-  .hero-visual { display: flex; justify-content: center; margin-top: 40px; padding: 0 32px; }
-  .ext-badge { right: -10px; }
-  .steps-grid { grid-template-columns: 1fr; gap: 2px; }
-  .step:first-child { border-radius: 14px 14px 0 0; }
-  .step:last-child { border-radius: 0 0 14px 14px; }
-  .features-grid { grid-template-columns: 1fr; }
-  .pricing-grid { grid-template-columns: 1fr; }
-  .section-headline { font-size: 28px; }
-  .nav-links { display: none; }
-}
-
-.browser-mockup { background: white; border-radius: 12px; box-shadow: 0 24px 64px rgba(13,34,72,0.16), 0 4px 16px rgba(13,34,72,0.08); overflow: hidden; border: 1px solid var(--cream-border); }
 .bm-tabs { height: 30px; background: #dee1e6; display: flex; align-items: flex-end; padding: 0 8px; gap: 2px; }
 .bm-tab { background: white; height: 24px; border-radius: 6px 6px 0 0; display: flex; align-items: center; padding: 0 10px; gap: 6px; min-width: 160px; }
 .bm-tab-favicon { width: 10px; height: 8px; background: #FFCC00; border-radius: 1px; }
@@ -431,7 +106,7 @@ footer {
 .bm-nav-btn { width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #5f6368; font-size: 14px; font-weight: 300; line-height: 1; }
 .bm-url { flex: 1; background: white; border-radius: 12px; height: 24px; display: flex; align-items: center; padding: 0 10px; box-shadow: inset 0 0 0 0.5px #dfe1e5; margin: 0 4px; }
 .bm-url span { font-size: 10px; color: #202124; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.bm-w-icon { width: 22px; height: 22px; background: #0D2248; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.bm-w-icon { width: 22px; height: 22px; background: var(--navy); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .bm-w-icon span { color: white; font-size: 11px; font-weight: 700; font-family: Georgia, serif; }
 .bm-body { display: flex; overflow: hidden; height: 300px; }
 .bm-article { flex: 1; background: white; overflow: hidden; padding: 18px 20px; }
@@ -443,7 +118,7 @@ footer {
 .bm-divider { width: 1px; background: #e0e0e0; flex-shrink: 0; }
 .bm-panel { width: 165px; flex-shrink: 0; display: flex; flex-direction: column; background: white; }
 .bm-panel-header { height: 28px; background: #f1f3f4; border-bottom: 1px solid #e0e0e0; display: flex; align-items: center; padding: 0 8px; gap: 5px; }
-.bm-panel-icon { width: 14px; height: 14px; background: #0D2248; border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.bm-panel-icon { width: 14px; height: 14px; background: var(--navy); border-radius: 2px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .bm-panel-icon span { color: white; font-size: 8px; font-weight: 700; font-family: Georgia, serif; }
 .bm-panel-name { font-size: 10px; color: #202124; font-family: system-ui; }
 .bm-panel-body { background: #F1F3F7; flex: 1; padding: 7px; display: flex; flex-direction: column; gap: 5px; }
@@ -454,55 +129,197 @@ footer {
 .bm-panel-divider { display: flex; align-items: center; gap: 5px; }
 .bm-panel-divider-line { flex: 1; height: 1px; background: #CDD2DE; }
 .bm-panel-divider-text { font-size: 6.5px; color: #8A93A6; white-space: nowrap; font-family: system-ui; }
-.bm-dropzone { background: white; border: 1px dashed #CDD2DE; border-radius: 6px; padding: 10px 6px; display: flex; flex-direction: column; align-items: center; }
+.bm-dropzone { background: white; border: 1px dashed #CDD2DE; border-radius: 6px; padding: 10px 6px; display: flex; flex-direction: column; align-items: center; gap: 3px; }
 .bm-dropzone-text { font-size: 7.5px; color: #505869; font-family: system-ui; }
 .bm-lengths { display: flex; gap: 3px; }
 .bm-len { flex: 1; padding: 4px 2px; border: 0.5px solid #CDD2DE; border-radius: 4px; background: white; font-size: 7px; color: #141820; text-align: center; font-family: system-ui; }
-.bm-len.active { background: #0D2248; border-color: #0D2248; color: white; font-weight: 600; }
-.bm-add-btn { width: 100%; padding: 7px; background: #0D2248; border-radius: 4px; color: white; font-size: 8px; font-weight: 600; font-family: system-ui; text-align: center; }
+.bm-len.active { background: var(--navy); border-color: var(--navy); color: white; font-weight: 600; }
+.bm-add-btn { width: 100%; padding: 7px; background: var(--navy); border: none; border-radius: 4px; color: white; font-size: 8px; font-weight: 600; font-family: system-ui; text-align: center; }
 .bm-signout { text-align: center; font-size: 6.5px; color: #8A93A6; font-family: system-ui; }
 
-.phone-frame { position: absolute; bottom: -24px; left: -4px; z-index: 4; width: 220px; border-radius: 30px; }
+/* PHONE */
+
+.phone-frame {
+  width: 220px;
+  background: var(--cream);
+  border-radius: 32px;
+  box-shadow: 0 24px 64px rgba(13,34,72,0.22), 0 4px 16px rgba(13,34,72,0.1), 0 0 0 1px rgba(13,34,72,0.07);
+  overflow: hidden;
+  position: absolute;
+  bottom: -24px;
+  left: -28px;
+  z-index: 4;
+}
+.phone-status {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 18px 4px; font-size: 10px; font-weight: 600; color: var(--ink);
+}
+.phone-header { padding: 4px 18px 0; }
+.phone-wren {
+  font-family: var(--font-serif); font-size: 10px; font-weight: 600;
+  color: var(--ink-light); letter-spacing: 0.07em;
+  display: flex; align-items: center; gap: 4px; margin-bottom: 2px;
+}
+.phone-wren-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--navy-light); }
+.phone-title {
+  font-family: var(--font-serif); font-size: 19px; font-weight: 700;
+  color: var(--ink); letter-spacing: -0.02em;
+}
+.phone-np-img {
+  margin: 8px 16px 0; border-radius: 10px; overflow: hidden;
+  aspect-ratio: 16/9; background: var(--cream-dark);
+}
+.phone-np-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.45) brightness(0.9); }
+.phone-np-meta { padding: 8px 16px 0; }
+.phone-np-source {
+  font-size: 8px; font-weight: 600; color: var(--navy-light);
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2px;
+}
+.phone-np-title {
+  font-family: var(--font-serif); font-size: 12px; font-weight: 600;
+  color: var(--ink); line-height: 1.35;
+}
+.phone-np-progress { padding: 8px 16px 0; }
+.phone-progress-track { height: 2px; background: var(--cream-border); border-radius: 1px; position: relative; }
+.phone-progress-fill { position: relative; height: 100%; width: 38%; background: var(--navy); border-radius: 1px; }
+.phone-progress-times { display: flex; justify-content: space-between; margin-top: 4px; font-size: 9px; color: var(--ink-light); }
+.phone-controls { padding: 8px 16px 14px; display: flex; align-items: center; justify-content: space-between; }
+.phone-controls .phone-ctrl {
+  padding: 0; border: none; background: none; margin: 0; color: var(--ink-muted);
+  display: inline-flex; align-items: center; justify-content: center;
+  appearance: none; -webkit-appearance: none; font: inherit; line-height: 0; cursor: default;
+}
+.phone-play {
+  width: 34px; height: 34px; border-radius: 50%; background: var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(13,34,72,0.3);
+}
+.phone-play svg { width: 13px; height: 13px; fill: #fff; margin-left: 2px; }
+.phone-speed { display: flex; justify-content: center; gap: 3px; padding: 6px 0 0; }
+.phone-speed-btn {
+  font-size: 9px; font-weight: 500; color: var(--ink-muted);
+  padding: 2px 7px; border-radius: 20px; border: 1px solid var(--cream-border);
+  background: none;
+}
+.phone-speed-btn.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+.phone-miniplayer {
+  background: var(--navy); margin: 8px 0 0; padding: 7px 14px;
+  display: flex; align-items: center; gap: 8px;
+}
+.phone-mini-thumb { width: 24px; height: 24px; border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+.phone-mini-thumb img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.3); }
+.phone-mini-info { flex: 1; min-width: 0; }
+.phone-mini-label { font-size: 7px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1px; }
+.phone-mini-title { font-family: var(--font-serif); font-size: 9px; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.phone-mini-bar { height: 1px; background: rgba(255,255,255,0.2); margin-top: 3px; }
+.phone-mini-fill { height: 100%; width: 38%; background: rgba(255,255,255,0.5); }
+.phone-tabs {
+  background: var(--cream); border-top: 1px solid var(--cream-border);
+  display: flex; padding: 5px 0 12px;
+}
+.phone-tab { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+.phone-tab svg { width: 14px; height: 14px; stroke: var(--ink-light); fill: none; stroke-width: 1.8; }
+.phone-tab.active svg { stroke: var(--navy); }
+.phone-tab-label { font-size: 8px; color: var(--ink-light); font-weight: 500; }
+.phone-tab.active .phone-tab-label { color: var(--navy); font-weight: 600; }
+
+
+/* PIPELINE */
+.pipeline-section { background: var(--navy); padding: 88px var(--gutter); }
+.pipeline-inner { max-width: var(--max); margin: 0 auto; }
+.pipeline-section .eyebrow { color: rgba(255,255,255,0.4); }
+.pipeline-section .eyebrow::before { background: rgba(255,255,255,0.3); }
+.pipeline-headline { font-family: var(--font-serif); font-size: 38px; font-weight: 700; color: #fff; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; max-width: 560px; }
+.pipeline-subhead { font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 56px; max-width: 500px; }
+.pipeline-diagram { display: flex; align-items: stretch; gap: 0; }
+.pipeline-node { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 24px 20px; display: flex; flex-direction: column; gap: 10px; }
+.pipeline-node:first-child { border-radius: 14px 4px 4px 14px; }
+.pipeline-node:last-child { border-radius: 4px 14px 14px 4px; }
+.pipeline-arrow { width: 28px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.2); font-size: 18px; }
+.node-icon { width: 34px; height: 34px; border-radius: 8px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.node-icon svg { width: 16px; height: 16px; stroke: rgba(255,255,255,0.65); fill: none; stroke-width: 1.8; }
+.node-label { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; }
+.node-name { font-family: var(--font-serif); font-size: 16px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 2px; }
+.node-detail { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+/* STACK */
+.stack-section { padding: 88px var(--gutter); }
+.stack-inner { max-width: var(--max); margin: 0 auto; }
+.stack-headline { font-family: var(--font-serif); font-size: 38px; font-weight: 700; color: var(--ink); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 12px; }
+.stack-subhead { font-size: 16px; color: var(--ink-muted); margin-bottom: 48px; }
+.stack-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+.stack-card { background: var(--white); padding: 28px 24px; }
+.stack-card:nth-child(1) { border-radius: 14px 0 0 0; }
+.stack-card:nth-child(4) { border-radius: 0 14px 0 0; }
+.stack-card:nth-child(5) { border-radius: 0 0 0 14px; }
+.stack-card:nth-child(8) { border-radius: 0 0 14px 0; }
+.stack-card-layer { font-size: 10px; font-weight: 600; color: var(--navy-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+.stack-card-name { font-family: var(--font-serif); font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 8px; }
+.stack-card-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.6; }
+
+/* ABOUT */
+.about-section { background: var(--navy); padding: 88px var(--gutter); }
+.about-inner { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 80px; align-items: center; }
+.about-section .eyebrow { color: rgba(255,255,255,0.4); }
+.about-section .eyebrow::before { background: rgba(255,255,255,0.3); }
+.about-headline { font-family: var(--font-serif); font-size: 38px; font-weight: 700; color: #fff; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 20px; }
+.about-body { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 32px; }
+.about-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 9px; font-family: var(--font-sans); font-size: 14px; font-weight: 600; text-decoration: none; transition: opacity 0.15s; background: #fff; color: var(--navy); }
+.about-btn:hover { opacity: 0.85; }
+.about-photo { width: 240px; height: 240px; border-radius: 14px; overflow: hidden; flex-shrink: 0; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+
+/* FOOTER */
+footer { background: var(--navy); border-top: 1px solid rgba(255,255,255,0.07); padding: 28px var(--gutter); }
+.footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: var(--font-serif); font-size: 16px; font-weight: 700; color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 6px; text-decoration: none; }
+.footer-logo-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--navy-light); }
+.footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+@media (max-width: 860px) {
+  .intro { grid-template-columns: 1fr; gap: 64px; }
+  .intro-headline { font-size: 34px; }
+  .pipeline-diagram { flex-direction: column; }
+  .pipeline-arrow { transform: rotate(90deg); height: 28px; width: 100%; }
+  .pipeline-node:first-child { border-radius: 14px 14px 0 0; }
+  .pipeline-node:last-child { border-radius: 0 0 14px 14px; }
+  .stack-grid { grid-template-columns: 1fr 1fr; }
+  .about-inner { grid-template-columns: 1fr; gap: 48px; }
+  .nav-links { display: none; }
+  .intro-stats { flex-wrap: wrap; }
+  .phone-frame { bottom: -16px; left: -16px; width: 180px; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">
-      <span class="nav-logo-dot"></span>
-      Wren
-    </a>
+    <a href="https://onwren.com" class="nav-logo"><span class="nav-logo-dot"></span>Wren</a>
     <div class="nav-links">
-<a href="https://app.onwren.com" target="_blank" rel="noopener noreferrer" class="nav-cta">Start Listening Free</a>
+      <a href="https://app.onwren.com" target="_blank" rel="noopener noreferrer" class="nav-cta">Try Wren Free</a>
     </div>
   </div>
 </nav>
 
-<!-- HERO -->
 <section style="background: var(--cream);">
-  <div class="hero">
-    <div class="hero-copy">
-      <div class="hero-eyebrow">Introducing Wren</div>
-      <h1 class="hero-headline serif">Listen to everything<br><em>you've been meaning to read.</em></h1>
-      <p class="hero-subhead">Wren turns articles, research papers, and long reads into audio summaries — so your commute, gym session, or morning walk becomes time well spent.</p>
-      <div class="hero-ctas"><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
+  <div class="intro">
+    <div class="intro-copy">
+      <div class="eyebrow">Hi, I'm Richard</div>
+      <h1 class="intro-headline serif">I built Wren to<br><em>reduce my screen time.</em></h1>
+      <p class="intro-body">Wren converts articles, PDFs, and YouTube videos into AI-generated audio summaries. Save something while browsing, listen on your commute. It started as a personal tool and grew into a live product with paying users and real infrastructure.</p>
+      <div class="intro-stats">
+        <div class="intro-stat-item"><span class="stat-val">~$0.02</span><span class="stat-lbl">cost per article</span></div>
+        <div class="intro-stat-item"><span class="stat-val">6</span><span class="stat-lbl">pipeline steps</span></div>
+        <div class="intro-stat-item"><span class="stat-val">3</span><span class="stat-lbl">AI models</span></div>
+        <div class="intro-stat-item"><span class="stat-val">v1.1</span><span class="stat-lbl">on Chrome Web Store</span></div>
+      </div>
+<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">
       <a href="https://app.onwren.com" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#0D2248;color:#fff;padding:13px 26px;border-radius:10px;font-family:var(--font-sans);font-size:15px;font-weight:600;text-decoration:none;">Try Wren Free</a>
       <a href="https://chromewebstore.google.com/detail/wren/hhgeojcfjcckmmkfhngdlcalbgjljgam?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" style="display:inline-block;background:#fff;color:#0D2248;border:1.5px solid #0D2248;padding:12px 26px;border-radius:10px;font-family:var(--font-sans);font-size:15px;font-weight:600;text-decoration:none;">Install on Chrome</a>
-    </div></div>
-      <div class="hero-social-proof">
-        <div class="proof-avatars">
-          <div class="proof-avatar">DR</div>
-          <div class="proof-avatar">MK</div>
-          <div class="proof-avatar">JL</div>
-          <div class="proof-avatar">+</div>
-        </div>
-        <p class="proof-text"><strong>Used by physicians, researchers,</strong> and curious readers</p>
-      </div>
     </div>
-    <div class="hero-visual" style="position:relative;padding-bottom:52px;padding-left:32px;">
-      <div style="position:relative;padding-bottom:52px;padding-left:32px;">
+    </div>
+    <div style="position:relative;padding-bottom:52px;padding-left:32px;">
       <div class="browser-mockup">
         <div class="bm-tabs">
           <div class="bm-tab">
@@ -616,169 +433,91 @@ footer {
         </div>
       </div>
     </div>
-    </div>
-  </div>
+
 </section>
 
-<div style="border-top:1px solid var(--cream-border);"></div>
-
-<!-- HOW IT WORKS -->
-<section class="section" id="how-it-works">
-  <div class="section-inner">
-    <div class="section-eyebrow">How it works</div>
-    <h2 class="section-headline serif">Three steps. Zero reading required.</h2>
-    <p class="section-subhead">Save anything from the web, get a clear spoken summary, listen whenever suits you.</p>
-    <div class="steps-grid">
-      <div class="step">
-        <div class="step-number">01</div>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        </div>
-        <h3 class="step-title serif">Save the article</h3>
-        <p class="step-desc">Click the Wren extension on any article, blog post, or research paper. Or paste a URL directly into the app. Wren captures the full text instantly.</p>
+<section class="pipeline-section">
+  <div class="pipeline-inner">
+    <div class="eyebrow">How it works</div>
+    <h2 class="pipeline-headline serif">Six-step pipeline.</h2>
+    <p class="pipeline-subhead">Audio in under a minute. The full pipeline runs server-side on Vercel, no client needed after the initial request.</p>
+    <div class="pipeline-diagram">
+      <div class="pipeline-node">
+        <div class="node-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="node-label">Step 1</div><div class="node-name"><a href="https://chromewebstore.google.com/detail/wren/hhgeojcfjcckmmkfhngdlcalbgjljgam?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" style="color:#fff;text-decoration:none;">Chrome Extension</a></div>
+        <div class="node-detail">MV3 side panel. Extracts article text via Readability.js. Handles PDFs locally with pdfjs-dist before sending.</div>
       </div>
-      <div class="step">
-        <div class="step-number">02</div>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-        </div>
-        <h3 class="step-title serif">Wren summarizes it</h3>
-        <p class="step-desc">Wren generates a clear, spoken summary — a few minutes for standard articles, up to 10 minutes for long-form research. No fluff, no filler.</p>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-node">
+        <div class="node-icon"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <div class="node-label">Step 2</div><div class="node-name">Edge Function</div>
+        <div class="node-detail">Vercel Edge receives the request, queues the article in Supabase, and fires the pipeline server-side.</div>
       </div>
-      <div class="step">
-        <div class="step-number">03</div>
-        <div class="step-icon">
-          <svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>
-        </div>
-        <h3 class="step-title serif">Listen anywhere</h3>
-        <p class="step-desc">Open Wren on your phone and your queue is ready. Listen on your commute, at the gym, while cooking — whenever reading isn't an option.</p>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-node">
+        <div class="node-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <div class="node-label">Step 3</div><div class="node-name">Claude Haiku</div>
+        <div class="node-detail">Strips navigation, ads, and boilerplate. Prepares clean text for summarization at a fraction of the cost of Sonnet.</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- FEATURES -->
-<section class="features-section" id="features">
-  <div class="features-inner">
-    <div class="section-eyebrow">Features</div>
-    <h2 class="section-headline serif" style="color:#fff;">Everything you need.<br>Nothing you don't.</h2>
-    <p class="section-subhead">More listening. Less screen time.</p>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
-        <h3 class="feature-title serif"><a href="https://chromewebstore.google.com/detail/wren/hhgeojcfjcckmmkfhngdlcalbgjljgam?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">Chrome extension ↗</a></h3>
-        <p class="feature-desc">Save any article you're reading with one click. Works on news sites, blogs, journals, and most paywalled content you're already subscribed to.</p>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-node">
+        <div class="node-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div class="node-label">Step 4</div><div class="node-name">Claude Sonnet</div>
+        <div class="node-detail">Generates the final spoken summary at the user's chosen length, 2, 5, or 10 minutes.</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
-        <h3 class="feature-title serif">Mobile-first app</h3>
-        <p class="feature-desc">Add Wren to your home screen for a native app feel. Queue syncs across all your devices — save on desktop, listen on your phone.</p>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-node">
+        <div class="node-icon"><svg viewBox="0 0 24 24"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg></div>
+        <div class="node-label">Step 5</div><div class="node-name">Google Cloud TTS</div>
+        <div class="node-detail">Gemini 2.5 Flash TTS converts the summary to natural-sounding audio, stored privately in Supabase Storage.</div>
       </div>
-      <div class="feature-card">
-        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <h3 class="feature-title serif">PDF support</h3>
-        <p class="feature-desc">Upload PDFs directly — research papers, reports, whitepapers. Wren extracts the text and generates a summary just like any other article.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3 7h7l-5.5 4 2 7L12 16l-6.5 4 2-7L2 9h7z"/></svg></div>
-        <h3 class="feature-title serif">Pro long-form</h3>
-        <p class="feature-desc">Pro subscribers unlock summaries up to 10 minutes long — ideal for academic journals, clinical studies, and long-form essays that deserve proper treatment.</p>
+      <div class="pipeline-arrow">→</div>
+      <div class="pipeline-node">
+        <div class="node-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+        <div class="node-label">Step 6</div><div class="node-name">PWA</div>
+        <div class="node-detail">Realtime subscription pushes the status update. Signed URLs generated on demand. Audio streams directly from Storage.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section class="pricing-section" id="pricing">
-  <div class="pricing-inner">
-    <div class="section-eyebrow">Pricing</div>
-    <h2 class="section-headline serif">Simple, honest pricing.</h2>
-    <p class="section-subhead">Start free. Pay only when you need more.</p>
-    <div class="pricing-grid">
-
-      <!-- Free -->
-      <div class="pricing-card">
-        <span class="pricing-badge free-badge">Free</span>
-        <div class="pricing-name serif">Free</div>
-        <p class="pricing-desc">Everything you need to get started. No credit card required.</p>
-        <div class="pricing-price">
-          <div class="pricing-amount serif">$0</div>
-          <div class="pricing-period">per month, always</div>
-        </div>
-        <ul class="pricing-features">
-          <li>10 standard articles per month</li>
-          <li>Chrome extension</li>
-          <li>Mobile app access</li>
-          <li>Adjustable playback speed</li>
-        </ul>
-      </div>
-
-      <!-- Bundles -->
-      <div class="pricing-card">
-        <span class="pricing-badge bundle-badge">Pay as you go</span>
-        <div class="pricing-name serif">Top Up</div>
-        <p class="pricing-desc">Need more articles this month? Buy a bundle — no subscription required.</p>
-        <div class="pricing-price" style="margin-bottom:16px;">
-          <div class="pricing-amount serif" style="font-size:28px;">From <sup style="font-size:14px;">$</sup>0.99</div>
-          <div class="pricing-period">per bundle, one-time</div>
-        </div>
-        <div class="bundle-row">
-          <div class="bundle-opt">
-            <div class="bundle-qty serif">25</div>
-            <div class="bundle-unit">articles</div>
-            <div class="bundle-price">$0.99</div>
-          </div>
-          <div class="bundle-opt">
-            <div class="bundle-qty serif">100</div>
-            <div class="bundle-unit">articles</div>
-            <div class="bundle-price">$2.99</div>
-          </div>
-          <div class="bundle-opt">
-            <div class="bundle-qty serif">300</div>
-            <div class="bundle-unit">articles</div>
-            <div class="bundle-price">$6.99</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Pro -->
-      <div class="pricing-card featured">
-        <span class="pricing-badge pro-badge">Pro</span>
-        <div class="pricing-name serif" style="color:#fff;">Unlimited</div>
-        <p class="pricing-desc">For professionals who need to stay current on research and long-form content.</p>
-        <div class="pricing-price">
-          <div class="pricing-amount serif" style="color:#fff;"><sup>$</sup>19.99</div>
-          <div class="pricing-period">per month</div>
-        </div>
-        <ul class="pricing-features">
-          <li>Unlimited standard articles</li>
-          <li>Long-form summaries up to 10 min</li>
-          <li>Journal &amp; research paper support</li>
-          <li>PDF uploads</li>
-        </ul>
-      </div>
-
+<section class="stack-section">
+  <div class="stack-inner">
+    <div class="eyebrow">Tech Stack</div>
+    <h2 class="stack-headline serif">What it's built on.</h2>
+    <p class="stack-subhead">Built with Cursor IDE, with Claude as AI tech lead.</p>
+    <div class="stack-grid">
+      <div class="stack-card"><div class="stack-card-layer">AI, Summarization</div><div class="stack-card-name">Anthropic Claude</div><div class="stack-card-desc">Sonnet for summaries, Haiku for content cleaning. Two-model approach keeps quality high and cost low.</div></div>
+      <div class="stack-card"><div class="stack-card-layer">AI, Audio</div><div class="stack-card-name">Google Cloud TTS</div><div class="stack-card-desc">Gemini 2.5 Flash TTS. Natural-sounding audio at roughly $0.004 per article.</div></div>
+      <div class="stack-card"><div class="stack-card-layer">Database, Auth, Storage</div><div class="stack-card-name">Supabase</div><div class="stack-card-desc">Postgres with row-level security for per-user data isolation. Realtime subscriptions push pipeline status to the client without polling.</div></div>
+      <div class="stack-card"><div class="stack-card-layer">Backend</div><div class="stack-card-name">Vercel Edge</div><div class="stack-card-desc">One file per endpoint. Pipeline runs server-side so the client can close after triggering a request.</div></div>
+      <div class="stack-card"><div class="stack-card-layer">Frontend</div><div class="stack-card-name">React + Vite PWA</div><div class="stack-card-desc">Mobile-first, installable on iOS and Android home screens. Inline styles throughout, no CSS framework.</div></div>
+      <div class="stack-card"><div class="stack-card-layer">Browser Extension</div><div class="stack-card-name"><a href="https://chromewebstore.google.com/detail/wren/hhgeojcfjcckmmkfhngdlcalbgjljgam?authuser=0&hl=en" target="_blank" rel="noopener noreferrer" style="color:var(--ink);text-decoration:none;">Chrome MV3</a></div><div class="stack-card-desc">Side Panel API. Persistent panel stays open as you browse. PDF text extracted locally before sending.</div></div>
+      <div class="stack-card"><div class="stack-card-layer">Payments</div><div class="stack-card-name">Stripe</div><div class="stack-card-desc">Pro subscriptions and one-time article bundles. Webhook updates user plan in Supabase on confirmation.</div></div>
+      <div class="stack-card"><div class="stack-card-layer">YouTube Transcripts</div><div class="stack-card-name">Apify</div><div class="stack-card-desc">Managed actor for YouTube transcript extraction. Server detects YouTube URLs and routes automatically, same pipeline as articles.</div></div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<section class="about-section">
+  <div class="about-inner">
+    <div>
+      <div class="eyebrow">About</div>
+      <h2 class="about-headline serif">Richard Schmid</h2>
+      <p class="about-body">I'm a product person who likes to build. Wren started as a side project to solve a problem I had, and turned into a real product with real users. Actively exploring product roles where I can stay close to the work, not just write specs.</p>
+      <a href="https://www.linkedin.com/in/richie-schmid/" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:8px;font-family:var(--font-sans);font-size:15px;font-weight:600;color:#fff;text-decoration:none;border-bottom:1.5px solid rgba(255,255,255,0.25);padding-bottom:3px;">LinkedIn <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+    <div class="about-photo"><img src="data:image/jpeg;base64,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" alt="Richard Schmid">
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-logo">
-          <span class="footer-logo-dot"></span>
-          Wren
-        </div>
-        <div class="footer-tagline">More listening. Less screen time.</div>
-      </div>
-      <div class="footer-links">
-        <a href="https://app.onwren.com" target="_blank" rel="noopener noreferrer">Open App</a>
-        <a href="https://chromewebstore.google.com/detail/wren/hhgeojcfjcckmmkfhngdlcalbgjljgam?authuser=0&hl=en" target="_blank" rel="noopener noreferrer">Chrome Extension</a>
-        <a href="https://app.onwren.com/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-        <a href="/cdn-cgi/l/email-protection#6008050c0c0f200f0e1712050e4e030f0d">Contact</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">© 2026
+    <a href="https://onwren.com" class="footer-logo"><span class="footer-logo-dot"></span>Wren</a>
+    <p class="footer-copy">© 2026 Wren.</p>
+  </div>
+</footer>
+
+</body>
+</html>
