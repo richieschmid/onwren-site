@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.onwren.app",
+      "sha256_cert_fingerprints": [
+        "81:24:B2:3C:C7:0E:C7:33:98:CA:03:9E:12:72:09:CC:83:9E:57:72:86:34:7C:C5:4D:BB:8A:B9:56:DF:97:F9"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.get_login_creds"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.onwren.app",
+      "sha256_cert_fingerprints": [
+        "81:24:B2:3C:C7:0E:C7:33:98:CA:03:9E:12:72:09:CC:83:9E:57:72:86:34:7C:C5:4D:BB:8A:B9:56:DF:97:F9"
+      ]
+    }
+  }
+]
